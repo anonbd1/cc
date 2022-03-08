@@ -14,7 +14,7 @@ if(!isset($_SESSION['UserData']['Username'])){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-h1{font-size:48px;line-height:.8em;font-weight:400;text-align:center;padding:18px 0;margin:100px 0 0 -2px}h3{font-family:Michroma,sans-serif;text-transform:uppercase;font-size:24px;line-height:1.2;line-spacing:1em;margin:0;text-align:center}
+body{background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;animation:gradient 15s ease infinite;height:100vh}@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}h1{font-size:48px;line-height:.8em;font-weight:400;text-align:center;padding:18px 0;margin:100px 0 0 -2px}h3{font-family:Michroma,sans-serif;text-transform:uppercase;font-size:24px;line-height:1.2;line-spacing:1em;margin:0;text-align:center}
 </style>
 </head>
 <body text=red>
