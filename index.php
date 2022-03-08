@@ -1,4 +1,10 @@
+<?php session_start(); /* Starts the session */
 
+if(!isset($_SESSION['UserData']['Username'])){
+	header("location:login.php");
+	exit;
+}
+?>
 <html>
 <head>
 
@@ -8,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-body{font-family:'Mr Dafoe',cursive;color:#fff;background:#3494e6;background:-webkit-linear-gradient(90deg,#ec6ead,#3494e6);background:linear-gradient(90deg,#ec6ead,#3494e6)}h1{font-size:48px;line-height:.8em;font-weight:400;text-align:center;padding:18px 0;margin:100px 0 0 -2px}h3{font-family:Michroma,sans-serif;text-transform:uppercase;font-size:24px;line-height:1.2;line-spacing:1em;margin:0;text-align:center}
+h1{font-size:48px;line-height:.8em;font-weight:400;text-align:center;padding:18px 0;margin:100px 0 0 -2px}h3{font-family:Michroma,sans-serif;text-transform:uppercase;font-size:24px;line-height:1.2;line-spacing:1em;margin:0;text-align:center}
 </style>
 </head>
 <body text=red>
@@ -102,8 +108,7 @@ placeholder="Enter Cards Here";" id="lista" class="md-textarea form-control" row
 </div>
 <br>
 </center>
-<script  src="./script.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" type="text/javascript"></script>
+<script  src="/script.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -191,9 +196,7 @@ $(document).ready(function(){
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script>
 <footer>
-    <center><span class="badge badge-dark rainbow_text_animated "><h3>hackerbd Team </h1></span>
-
-     <!-- Index Credits:[🐉@DragonBin] -->
+    <center><span class="badge badge-dark rainbow_text_animated "><h3>hackerbd Team </h1></span> <a href="logout.php">Click here</a> to Logout.
 
 
 </footer>
