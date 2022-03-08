@@ -193,15 +193,13 @@ curl_close($ch);
 
 //=======================[Proxys]=============================//
 $rp1 = array(
-  1 => 'wmtaesuy-rotate:zxzqq3b102wm', /// [ex :- igapfgvg-rotate:4spo27fv5idh]
-  2 => 'fubnwffu-rotate:suehqo9jf6i9',
+  1 => 'hswtuhxo-rotate:g0iaxto4n9bu', /// [ex :- igapfgvg-rotate:4spo27fv5idh]
     ); 
     $rpt = array_rand($rp1);
     $rotate = $rp1[$rpt];
 
 
 $ip = array(
-  1 => 'socks5://p.webshare.io:1080',
   2 => 'http://p.webshare.io:80',
     ); 
     $socks = array_rand($ip);
