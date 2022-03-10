@@ -194,6 +194,7 @@ curl_close($ch);
 //=======================[Proxys]=============================//
 $rp1 = array(
   1 => 'hswtuhxo-rotate:g0iaxto4n9bu', /// [ex :- igapfgvg-rotate:4spo27fv5idh]
+  2 => 'nctgpibx-rotate:r9urs4nd7sjq',
     ); 
     $rpt = array_rand($rp1);
     $rotate = $rp1[$rpt];
