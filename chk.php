@@ -260,6 +260,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'email='.$email.'&validation_type=card&payment_user_agent=Stripe+Checkout+v3+(stripe.js%2F78ef418)&user_agent=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F99.0.4844.51+Safari%2F537.36&device_id=4fa5735f-5963-4e9e-9bc4-919b1befedc7&referrer=https%3A%2F%2Fwww.freeandwilling.com%2Ftransactions%2Fnew%3Fitem%3D12006&pasted_fields=number&time_checkout_opened=1646949361&time_checkout_loaded=1646949359&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&card[name]=Infoff%40tablig.net&time_on_page=59968&guid=3b66fe57-b81e-44b6-b105-89417b526ef56a02ea&muid=38d9be5d-a54c-4e3e-a1f7-a2768d196779154f94&sid=53cbca6e-752f-46ba-9c53-478640f9fc9088c568&key=pk_live_mVAaIghclsy3joMFdBLOpPJ2');
 
 $result = curl_exec($ch);
+$id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $info = curl_getinfo($ch);
 $time = $info['total_time'];
 
