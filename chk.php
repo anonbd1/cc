@@ -346,7 +346,7 @@ else {
 curl_close($ch);
 ob_flush();
 
-echo "<b>1REQ Result:</b> $result<br><br>";
+//echo "<b>1REQ Result:</b> $result<br><br>";
 
 
 //=============================================================//
