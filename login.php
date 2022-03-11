@@ -42,7 +42,7 @@
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-login100" style="background: #5C258D;background: -webkit-linear-gradient(to right, #4389A2, #5C258D);background: linear-gradient(to right, #4389A2, #5C258D);">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
 					Account Login
