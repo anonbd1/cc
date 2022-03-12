@@ -194,7 +194,6 @@ curl_close($ch);
 //=======================[Proxys]=============================//
 $rp1 = array(
   1 => 'hswtuhxo-rotate:g0iaxto4n9bu', /// [ex :- igapfgvg-rotate:4spo27fv5idh]
-  2 => 'nctgpibx-rotate:r9urs4nd7sjq',
     ); 
     $rpt = array_rand($rp1);
     $rotate = $rp1[$rpt];
@@ -390,8 +389,8 @@ else {
 curl_close($ch);
 ob_flush();
 
-echo "<b>1REQ Result:</b> $result1<br><br>";
-echo "<b>2REQ Result:</b> $result2<br><br>";
+//echo "<b>1REQ Result:</b> $result1<br><br>";
+//echo "<b>2REQ Result:</b> $result2<br><br>";
 
 //=============================================================//
 //================[Made By :- [🇮🇳]DRAGON MASTER]===============//
