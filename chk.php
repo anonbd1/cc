@@ -309,7 +309,7 @@ $time = $info['total_time'];
 
 //=======================[MADE BY]==============================//
 
-$MADEBY = "[ (🇮🇳)DRAGON MASTER ]";
+$MADEBY = "[ @anonbd ]";
 
 //[You Have  To Change Name Here Automatically In All Response Will Change ]//
 
